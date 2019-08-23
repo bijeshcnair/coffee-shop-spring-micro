@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class CoffeeController implements Barista {
 
     @Override
-    public boolean prepareCoffee() {
+    public boolean prepareCoffee(String type,int size) {
 
         try {
-            Thread.sleep(9000);
+            Thread.sleep(3000);
         } catch ( InterruptedException e ) {
             e.printStackTrace();
             return false;
         }
-        System.out.println("Coffee prepared by barista");
+        System.out.println("Coffee prepared by barista . Type : "+type +" and Size : "+size);
         return true;
     }
 }

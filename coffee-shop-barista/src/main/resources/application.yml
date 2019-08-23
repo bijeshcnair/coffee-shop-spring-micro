@@ -5,5 +5,9 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8900/eureka}
+    fetch-registry: true
+    register-with-eureka: true
+
   instance:
     preferIpAddress: true
+    lease-renewal-interval-in-seconds: 5
