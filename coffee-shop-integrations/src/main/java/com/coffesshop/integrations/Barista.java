@@ -1,26 +1,31 @@
 package com.coffesshop.integrations;
 
 
+import com.coffesshop.integrations.model.Coffee;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.stereotype.Component;
+import org.springframework.hateoas.Resource;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @FeignClient(value = "barista-services"
         ,configuration = FeignConfiguration.class
-        ,fallback = BaristaFallback.class)
+
+       )
+@RibbonClient(value = "braista-services",configuration = RibbonConfigurations.class)
 public interface Barista {
 
     @RequestMapping("/prepare-coffee")
-   public boolean prepareCoffee(@RequestParam("type") String type,@RequestParam("size") int size);
+    boolean prepareCoffee(@RequestParam("type") String type,@RequestParam("size") int size);
 
-  /*  @Component
-    public class BaristaFallBackd implements Barista {
-        @Override
-        public boolean prepareCoffee(String type, int size) {
-            System.out.println("Faileddd to prepare coffee");
-            return false;
+    @GetMapping("/coffees")
+    List<Coffee> getAllCoffees();
 
-        }
-    }*/
+    @GetMapping(value = "/coffees/{id}",produces = "application/hal+json")
+    Resource<Coffee> getCoffee(@PathVariable int id);
+
 }
