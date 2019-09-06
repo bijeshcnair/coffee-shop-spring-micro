@@ -24,7 +24,6 @@ public class CoffeeShopController {
     @Autowired
     Billing billing;
 
-
     @GetMapping(value = "/prepare-coffee",produces = "application/json")
     public ResponseEntity<MakeCoffeeResponse> makeCoffee(@RequestParam("userName") String userName,
                                                          @RequestParam("type") String type,
