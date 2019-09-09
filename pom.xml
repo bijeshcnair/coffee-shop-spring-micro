@@ -25,107 +25,26 @@
         <module>coffee-billing</module>
         <module>api-gateway</module>
     </modules>
-
-
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
-                <version>2.1.6.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <version>2.1.6.RELEASE</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
+             <dependency>
                 <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-parent</artifactId>
-                <version>Greenwich.RELEASE</version>
+                <artifactId>spring-cloud-dependencies</artifactId>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-                <version>2.1.2.RELEASE</version>
-            </dependency>
-            <dependency>
-            <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-config-client</artifactId>
-                <version>2.1.2.RELEASE</version>
-            </dependency><dependency>
-            <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-config-server</artifactId>
-                <version>2.1.2.RELEASE</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
-                <version>2.1.2.RELEASE</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>2.1.6.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <version>2.1.6.RELEASE</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
-                <version>2.1.6.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-feign</artifactId>
-                <version>1.4.7.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-                <version>2.1.1.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>com.micro.coffeeshop</groupId>
-                <artifactId>coffee-shop-integrations</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>Greenwich.RELEASE</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-devtools</artifactId>
                 <scope>runtime</scope>
                 <optional>true</optional>
-                <version>2.1.6.RELEASE</version>
+                <version>2.1.7.RELEASE</version>
             </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-actuator</artifactId>
-                <version>2.1.6.RELEASE</version>
-            </dependency>
-
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-rest-hal-browser</artifactId>
                 <version>3.1.9.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-hystrix</artifactId>
-                <version>1.4.7.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-hateoas</artifactId>
-                <version>2.1.4.RELEASE</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -143,22 +62,11 @@
                 <version>2.9.2</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
-                <version>2.1.1.RELEASE</version>
+                <groupId>com.micro.coffeeshop</groupId>
+                <artifactId>coffee-shop-integrations</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 
 </project>

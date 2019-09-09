@@ -12,20 +12,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(value = "barista-services"
-        ,configuration = FeignConfiguration.class
-
-       )
-@RibbonClient(value = "braista-services",configuration = RibbonConfigurations.class)
+@FeignClient(value = "api-gateway")
+@RibbonClient(value = "barista-services")
 public interface Barista {
 
-    @RequestMapping("/prepare-coffee")
+    @RequestMapping("/barista-services/prepare-coffee")
     boolean prepareCoffee(@RequestParam("type") String type,@RequestParam("size") int size);
 
-    @GetMapping("/coffees")
+    @GetMapping("/barista-services/coffees")
     List<Coffee> getAllCoffees();
 
-    @GetMapping(value = "/coffees/{id}",produces = "application/hal+json")
+    @GetMapping(value = "/barista-services/coffees/{id}",produces = "application/hal+json")
     Resource<Coffee> getCoffee(@PathVariable int id);
 
 }

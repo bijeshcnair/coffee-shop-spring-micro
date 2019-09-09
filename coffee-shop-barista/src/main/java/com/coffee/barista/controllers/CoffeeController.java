@@ -5,6 +5,8 @@ import com.coffee.barista.dao.CoffeeListDao;
 import com.coffesshop.integrations.model.Coffee;
 import com.coffesshop.integrations.Barista;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.hateoas.Link;
@@ -16,8 +18,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class CoffeeController implements Barista {
 
+public class CoffeeController {
+
+    Logger logger  = LoggerFactory.getLogger(this.getClass());
 
 
     @Autowired
@@ -26,7 +30,7 @@ public class CoffeeController implements Barista {
     Environment environment;
 
 
-    @Override
+    @RequestMapping("/barista-services/prepare-coffee")
     public boolean prepareCoffee(String type,int size) {
 
         try {
@@ -35,7 +39,7 @@ public class CoffeeController implements Barista {
             e.printStackTrace();
             return false;
         }
-        System.out.println("Coffee prepared by barista . Type : "+type +" and Size : "+size);
+        logger.info("Coffee prepared by barista Type {}, Size {}",type,size);
         return true;
     }
 
@@ -55,9 +59,9 @@ public class CoffeeController implements Barista {
      * @param id
      * @return
      */
-
-    @Override
+    @GetMapping(value = "/coffees/{id}",produces = "application/hal+json")
     public Resource<Coffee> getCoffee(@PathVariable int id){
+        logger.info("Getting coffee with ID {}",id);
         Coffee coffee = coffeeListDao.get(id).get();
 
         String port = environment.getProperty("local.server.port");
@@ -80,11 +84,16 @@ public class CoffeeController implements Barista {
     }
 
 
-    @Override
+    @GetMapping("/coffees")
     public List<Coffee> getAllCoffees() {
 
-        System.out.println("Reading all coffees");
+        logger.info("Reading all coffees");
         return coffeeListDao.getAll();
     }
 
+
+    @GetMapping("/status")
+    public String getStatus(){
+        return "up";
+    }
 }
