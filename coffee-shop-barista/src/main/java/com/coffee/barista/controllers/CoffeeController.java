@@ -16,6 +16,7 @@ import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Random;
 
 @RestController
 
@@ -30,7 +31,7 @@ public class CoffeeController {
     Environment environment;
 
 
-    @RequestMapping("/barista-services/prepare-coffee")
+    @RequestMapping("/prepare-coffee")
     public boolean prepareCoffee(String type,int size) {
 
         try {
@@ -62,6 +63,13 @@ public class CoffeeController {
     @GetMapping(value = "/coffees/{id}",produces = "application/hal+json")
     public Resource<Coffee> getCoffee(@PathVariable int id){
         logger.info("Getting coffee with ID {}",id);
+
+        Random r = new Random();
+        int random =  r.nextInt((100 - 2) + 1) + 2;
+        if(random %2 ==0){
+            logger.error("Its an EVEN number !!!!! {}",random );
+            throw new RuntimeException("Even number exception");
+        }
         Coffee coffee = coffeeListDao.get(id).get();
 
         String port = environment.getProperty("local.server.port");

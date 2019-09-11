@@ -3,7 +3,7 @@ spring:
     name: billing-services
 
 server:
-  port: 0
+  port: 8101
 eureka:
   client:
     serviceUrl:

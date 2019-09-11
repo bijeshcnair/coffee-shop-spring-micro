@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(value = "api-gateway")
+@FeignClient(contextId = "barista-services",value = "api-gateway")
 @RibbonClient(value = "barista-services")
 public interface Barista {
 

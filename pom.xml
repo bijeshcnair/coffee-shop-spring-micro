@@ -24,6 +24,7 @@
         <module>cloud-config</module>
         <module>coffee-billing</module>
         <module>api-gateway</module>
+        <module>zipkin-server</module>
     </modules>
     <dependencyManagement>
         <dependencies>
